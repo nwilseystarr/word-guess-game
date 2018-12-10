@@ -1,5 +1,6 @@
 <!DOCTYPE <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,29 +8,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="assets/css/style.css" />
     <link rel="reset-css" type="text/css" href="assets/css/reset.css" />
-    <script src="assets/javascript/game.js"></script>
 </head>
+
 <body>
-    <p>Open the console.</p>
-    <p>Press any key to begin!</p>
-    <p>Note that this is just the last names, if there is a space use "-".</p>
-    <p id = "current-word"></p> 
-    <p id = "current-word-text"></p>
-       
-        <!-- SPACE FOR GUESSES _ _ _ _ _ _ _ _ --> 
+    <div>
+        <p>Open the console.</p>
+        <p>Press any key to begin!</p>
+        <p>Note that this is just the last names, if there is a space use "-".</p>
+        <!-- <p id="current-word"></p> -->
+        <p id="currentword-text"></p>
+        <p id="correct-letters"></p>
+    </div>
+    <!-- SPACE FOR GUESSES _ _ _ _ _ _ _ _ -->
 
     <!--Number of guesses remaining-->
 
     <!--Letters already guessed-->
 
     <div>
-    <p id = current-word></p>
-    <p id = guessed-letters></p>
-    <p id = incorrect-guess></p>
-    <p id = already-guessed></p>
-    <p id = max-guesses></p>
+        <p id="guessed-letters"></p>
+        <p id="incorrect-guess"></p>
+        <p id="already-guessed"></p>
+        <p id="max-guesses"></p>
     </div>
 
-
+    <script src="assets/javascript/game.js"></script>
 </body>
+
 </html>
