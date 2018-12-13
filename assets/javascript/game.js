@@ -1,10 +1,11 @@
 //Main JS code will go here
 
 //Creates the array of US Presidents 
-var presidents = ["Washington", "Adams", "Jefferson", "Madison", "Monroe", "Jackson", "Harrison", "Tyler", "Polk", "Taylor",
-    "Fillmore", "Pierce", "Buchanan", "Lincoln", "Johnson", "Grant", "Hayes", "Garfield", "Arthur", "Cleveland", "Harrison", "McKinley",
-    "Taft", "Wilson", "Harding", "Coolidge", "Hoover", "Roosevelt", "Truman", "Eisenhower", "Kennedy", "Johnson",
+var presidents = ["Washington", "Madison", "Monroe", "Jackson", "Tyler", "Polk", "Taylor",
+     "Pierce", "Buchanan", "Lincoln", "Johnson", "Grant", "Hayes", "Garfield", "Arthur", "Cleveland", "McKinley",
+     "Wilson", "Harding", "Truman", "Johnson",
     "Nixon", "Ford", "Carter", "Reagan", "Bush", "Clinton", "Obama", "Trump"];
+    // "Fillmore","Hoover","Eisenhower", "Kennedy", "Harrison", "Jefferson", "Coolidge","Taft","Adams", "Roosevelt", "Harrison",
 
 //Create variables for tracking 
 var blanks = document.getElementById("blanks");
@@ -16,13 +17,14 @@ var guessedLetters = [];
 var guessingWord = [];
 var guessingWordText = document.getElementById("guessing-word");
 var incorrectGuess = document.getElementById("incorrect-letters");
-var incorrectLetters = [];
+var incorrectLetter = [];
 var maxGuesses = 5;
 var remainingGuesses = 0;
 var replaceText = document.getElementById("replace-text");
 var splitWord = [];
 var wins = 0;
-var wrongLetters = [];
+var winsText = document.getElementById("wins");
+
 
 //Load word to guess before the user begins guessing
 var currentWord = presidents[Math.floor(Math.random() * presidents.length)];
@@ -30,48 +32,51 @@ var currentWord = currentWord.toLowerCase();
 console.log(currentWord);
 
 //Display _ _ _ _ _ for the number of characters in the name, before a keystroke
- for (var l = 0; l < currentWord.length; l++) {
-    guessingWord.push("_"); {
-        (blanks.textContent = guessingWord);
-    };
-}   
-
-//Splitting the word into a string of separate letters
-var splitWord = currentWord.split("");
-console.log(splitWord);
-
-//onkeyevent to track users key strokes
-document.onkeyup = function (event) {
-    var userGuess = event.key;
-    guessedLetters.push(userGuess);
-    //Checks the current letter guessed against the array
-    var correctLetters = splitWord.includes(userGuess);
-    //console logs the letter guessed
-    console.log(userGuess); 
-    //Displys the boolean of True or false, changes with each keystroke
-    (correctGuess.textContent = "The answer is " + correctLetters);
+for (var i = 0; i < currentWord.length; i++) {
+    correctLetters.push("_"); {
+        (blanks.textContent = correctLetters);
+    }
 }
+    //Splitting the word into a string of separate letters
+    var splitWord = currentWord.split("");
+    console.log(splitWord);
 
-//Need if else statement. 
-//================================================
-//If the guess is true display it at the proper index in the correctLetters array. ??Need additional 
+    //onkeyevent to track users key strokes
+    document.onkeyup = function (event) {
+        var userGuess = event.key;
+        guessedLetters.push(userGuess);
 
-//Else, log display it in the "incorrectGuess" array
+        //Checks the current letter guessed against the array
+        if (splitWord.includes(userGuess)) {
+            // correctLetters.push(userGuess);
+            var splitWordIndex = splitWord.indexOf(userGuess);
+            if (correctLetters[splitWordIndex] !== "_"){
+                splitWordIndex = splitWord.indexOf(userGuess, 4);
+                //Line above is not filling all indicies of the array
+            }
+                correctLetters[splitWordIndex]=userGuess;
+            // correctGuess.textContent = "The correct letters are " + correctLetters.toString();
+        } else {
+            incorrectLetter.push(userGuess);
+            incorrectGuess.textContent = "The incorrect letters are " + incorrectLetter.toString();
+        }
 
-// have an array that has each ch the user is trying to guess, and have an array of the letters the user has actually guessed, 
-// and an empty array loop through the letters that they are guessing
-//and we check if it's there, then plug it in the empty array... put this in index in the array
+    blanks.textContent = correctLetters;
+    
+    //Check for win 
+  function win(){
+      if (correctLetters.indexOf("_") === -1) {
+          wins++;
+          winsText.textContent =  "Wins: " + wins;
+          hasFinished = true;
+      }
+    };
+    win()
+}
+//Check for loss 
+    //Function "loss" for if the user has 5 or more incorrect guesses 
 
-//Array of the current word 
+//Reset game 
+    // Pick a new word  
 
-//If correct (true), log the letter in the correct variable 
-
-//If incorrect (false), log the letter in the "already guessed" variable AND subtract from the number of guesses available
-
-//If that letter was already guessed, it does not effect the game
-
-//When the word is guessed correctly, display something to show that it was won 
-
-//When run out of guesses, display something to show that it was a loss
-
-//After the user wins/loses the game should automatically choose another word and make the user 
+    //Continue to update the wins and losses so long as the user stays on the page
