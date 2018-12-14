@@ -1,9 +1,8 @@
 /*Stylesheet*/ 
 
 body{
-    background-image:url("../images/background-image.jpeg"); 
+    background-image:url(../images/background-image.jpeg); 
     color: #0f07a2;
-
 }
 
 h1{ 
