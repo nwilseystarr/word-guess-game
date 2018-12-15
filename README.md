@@ -4,8 +4,6 @@ When the page loads, users will see a number of blanks that represent a US Presi
 
 There are a number of items I would have liked to make work with more time. I have listed those items below along with my workarounds to make the game functional:
 
-- When the browser window goes to 600px give it a background color or change color to red 
-
 - Reset the game when a user guesses all the correct letters OR has 5 incorrect guesses OR with a new word button
     - Created an alert for when the variables above are met telling the user they have won or lost and instructing them to reload the page
 
